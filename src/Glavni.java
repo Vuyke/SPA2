@@ -1,0 +1,17 @@
+
+public class Glavni {
+	public static void main(String args[]) {
+		Osobe[] osobe = new Osobe[8];
+		osobe[0] = new Osobe(12, "Jovan");
+		osobe[1] = new Osobe(15, "Milana");
+		osobe[2] = new Osobe(14, "Luka");
+		osobe[3] = new Osobe(21, "Sebastijan");
+		osobe[4] = new Osobe(45, "Milica");
+		osobe[5] = new Osobe(19, "Danilo");
+		osobe[6] = new Osobe(80, "Radmila");
+		osobe[7] = new Osobe(5, "Ana");
+		Sortiranje.ispis(osobe);
+		Sortiranje.comb(osobe, Osobe::compare);
+		Sortiranje.ispis(osobe);
+	}
+}
