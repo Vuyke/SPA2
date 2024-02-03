@@ -1,7 +1,10 @@
+package util;
+import elementarnoSortiranje.Osobe;
 
-public class Glavni {
-	public static void main(String args[]) {
-		Osobe[] osobe = new Osobe[8];
+public class Util {
+	public static Osobe[] osobe;
+	static {
+		osobe = new Osobe[8];
 		osobe[0] = new Osobe(12, "Jovan");
 		osobe[1] = new Osobe(15, "Milana");
 		osobe[2] = new Osobe(14, "Luka");
@@ -10,8 +13,5 @@ public class Glavni {
 		osobe[5] = new Osobe(19, "Danilo");
 		osobe[6] = new Osobe(80, "Radmila");
 		osobe[7] = new Osobe(5, "Ana");
-		Sortiranje.ispis(osobe);
-		Sortiranje.comb(osobe, Osobe::compare);
-		Sortiranje.ispis(osobe);
 	}
 }

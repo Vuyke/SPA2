@@ -1,5 +1,6 @@
+package elementarnoSortiranje;
 
-public class Osobe {
+public class Osobe implements Comparable<Osobe> {
 	private int godine;
 	private String ime;
 
@@ -30,6 +31,11 @@ public class Osobe {
 	
 	public String toString() {
 		return ime + " " + godine + ", ";
+	}
+
+	@Override
+	public int compareTo(Osobe o) {
+		return compare(this, o);
 	}
 
 }
