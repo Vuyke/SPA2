@@ -11,7 +11,7 @@ public class Glavni {
 			list.add(osoba);
 		}
 		list.ispis();
-		list.quickSort();
+		list.mergeSort();
 		list.ispis();
 	}
 }
