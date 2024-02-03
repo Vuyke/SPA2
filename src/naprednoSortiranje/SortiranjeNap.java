@@ -4,6 +4,7 @@ import java.util.Comparator;
 
 import heap.HeapPQ;
 import heap.PriorityQueue;
+import sortiranjeLista.SortableList;
 import util.Osobe;
 import util.Util;
 
@@ -46,16 +47,16 @@ public class SortiranjeNap {
 		quickSort(arr, c, 0, arr.length - 1);
 	}
 	
-	public static void countSort(int[] arr) {
+	public static void countSort(int[] arr) {//ne uporedjujemo elemente vec brojimo koliko kog ima
 		if(arr.length == 0)
 			return;
 		int max = arr[0];
 		for(int i = 1; i < arr.length; i++) {
 			max = Math.max(max, arr[i]);
 		}
-		int niz[] = new int[max + 1];
+		int niz[] = new int[max + 1];//pravljenje dovoljno brojaca
 		for(int i = 0; i < arr.length; i++) {
-			niz[arr[i]]++;
+			niz[arr[i]]++;//dodavanje na brojac broja a[i]
 		}
 		int ind = 0;
 		for(int i = 0; i <= max; i++) {
