@@ -13,4 +13,11 @@ public class Util { //odavde ce se uzimati elementi za nizove,liste,priority que
 		osobe[6] = new Osobe(80, "Radmila");
 		osobe[7] = new Osobe(5, "Ana");
 	}
+	
+	public static <T> void ispis(T[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + " ");
+		}
+		System.out.println();
+	}
 }

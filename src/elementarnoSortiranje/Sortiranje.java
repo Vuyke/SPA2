@@ -2,13 +2,6 @@ package elementarnoSortiranje;
 import java.util.Comparator;
 
 public class Sortiranje { ///sva elementarna sortiranja
-	public static <T> void ispis(T[] arr) {
-		for (int i = 0; i < arr.length; i++) {
-			System.out.print(arr[i] + " ");
-		}
-		System.out.println();
-	}
-
 	public static <T> void grubaSila(T[] arr, Comparator<T> comparator) {//svaka dva elementa menjamo ako su u inverziji
 		int n = arr.length;
 		for (int i = 0; i < n - 1; i++) {
