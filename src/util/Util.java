@@ -1,7 +1,6 @@
 package util;
-import elementarnoSortiranje.Osobe;
 
-public class Util {
+public class Util { //odavde ce se uzimati elementi za nizove,liste,priority queove...
 	public static Osobe[] osobe;
 	static {
 		osobe = new Osobe[8];
