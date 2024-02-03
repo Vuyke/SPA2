@@ -37,5 +37,15 @@ public class Osobe implements Comparable<Osobe> { ///Klasa za elemente liste
 	public int compareTo(Osobe o) { //prirodno uredjenje isto kao i compare
 		return compare(this, o);
 	}
+	
+	public int hashCode() {
+		return 5 * ime.hashCode() + 3 * godine;
+	}
+	
+	public boolean equals(Object o) {
+		if(!(o instanceof Osobe)) return false;
+		Osobe nov = (Osobe) o;
+		return nov.ime.equals(ime) && nov.godine == godine;
+	}
 
 }
