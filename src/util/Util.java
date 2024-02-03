@@ -20,4 +20,10 @@ public class Util { //odavde ce se uzimati elementi za nizove,liste,priority que
 		}
 		System.out.println();
 	}
+	
+	public static<T> void swap(T[] arr, int ind1, int ind2) {
+		T tmp = arr[ind1];
+		arr[ind1] = arr[ind2];
+		arr[ind2] = tmp;
+	}
 }
