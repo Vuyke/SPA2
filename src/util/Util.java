@@ -1,7 +1,10 @@
 package util;
 
+import backtrack.Item;
+
 public class Util { //odavde ce se uzimati elementi za nizove,liste,priority queove...
 	public static Osobe[] osobe;
+	public static Item[] items;
 	static {
 		osobe = new Osobe[8];
 		osobe[0] = new Osobe(12, "Jovan");
@@ -12,6 +15,18 @@ public class Util { //odavde ce se uzimati elementi za nizove,liste,priority que
 		osobe[5] = new Osobe(19, "Danilo");
 		osobe[6] = new Osobe(80, "Radmila");
 		osobe[7] = new Osobe(5, "Ana");
+	}
+	
+	static {
+        items = new Item[8];
+        items[0] = new Item(5, 10);
+        items[1] = new Item(8, 15);
+        items[2] = new Item(3, 7);
+        items[3] = new Item(6, 12);
+        items[4] = new Item(2, 4);
+        items[5] = new Item(7, 14);
+        items[6] = new Item(4, 9);
+        items[7] = new Item(1, 2);
 	}
 	
 	public static <T> void ispis(T[] arr) {
