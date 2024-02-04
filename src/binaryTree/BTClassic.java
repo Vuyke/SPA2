@@ -44,19 +44,21 @@ public class BTClassic<T extends Comparable<T>> {
 		return Math.max(depth(cur.getLeft()), depth(cur.getRight())) + 1;
 	}
 	
-	public void BFS() { //primer sa ispisom elemenata
-		if(root == null) return;
+	public BTNode<T> BFS(T info) {
+		if(root == null) return null;
 		LinkedList<BTNode<T>> queue = new LinkedList<BTNode<T>>();
 		queue.add(root);
 		while(!queue.isEmpty()) {
 			BTNode<T> cur = queue.removeFirst();
-			System.out.print(cur + ", ");
+			if(cur.getInfo().equals(info)) {
+				return cur;
+			}
 			if(cur.getLeft() != null)
 				queue.add(cur.getLeft());
 			if(cur.getRight() != null)
 				queue.add(cur.getRight());
 		}
-		System.out.println();
+		return null;
 	}
 	
 	public BTNode<T> DFS(T info) { //primer sa pretragom za element
@@ -75,6 +77,47 @@ public class BTClassic<T extends Comparable<T>> {
 		}
 		return null;
 	}
+	
+	public void preOrder() {
+		preOrder(root);
+		System.out.println();
+	}
+	
+	private void preOrder(BTNode<T> cur) {
+		if(cur == null)
+			return;
+		System.out.print(cur);
+		preOrder(cur.getLeft());
+		preOrder(cur.getRight());
+	}
+	
+	public void inOrder() {
+		inOrder(root);
+		System.out.println();
+	}
+	
+	private void inOrder(BTNode<T> cur) {
+		if(cur == null)
+			return;
+		inOrder(cur.getLeft());
+		System.out.print(cur);
+		inOrder(cur.getRight());
+	}
+	
+	public void postOrder() {
+		postOrder(root);
+		System.out.println();
+	}
+	
+	private void postOrder(BTNode<T> cur) {
+		if(cur == null)
+			return;
+		postOrder(cur.getLeft());
+		postOrder(cur.getRight());
+		System.out.print(cur);
+	}
+	
+	
 	public static void main(String args[]) {
 		Osobe[] osobe = Util.osobe;
 		BTNode<Osobe> jovan = new BTNode<Osobe>(osobe[0]);
@@ -85,6 +128,7 @@ public class BTClassic<T extends Comparable<T>> {
 		BTNode<Osobe> danilo = new BTNode<Osobe>(osobe[5]);
 		BTNode<Osobe> radmila = new BTNode<Osobe>(osobe[6]);
 		BTNode<Osobe> ana = new BTNode<Osobe>(osobe[7]);
+		
 		jovan.setLeft(milana);
 		jovan.setRight(luka);
 		milana.setLeft(sebastijan);
@@ -92,9 +136,19 @@ public class BTClassic<T extends Comparable<T>> {
 		luka.setLeft(danilo);
 		luka.setRight(radmila);
 		radmila.setLeft(ana);
+		
 		BTClassic<Osobe> bin = new BTClassic<Osobe>(jovan);
-		bin.BFS();
+		
+		bin.preOrder();
 		System.out.println(bin.depth());
 		System.out.println(bin.nodeCount());
+		BTNode<Osobe> cur = bin.DFS(new Osobe(11, "Jovan"));
+		if(cur == null) {
+			System.out.println("Ne postoji!!!");
+		}
+		else {
+			System.out.println("Postoji: " + cur);
+		}
+		
 	}
 }
