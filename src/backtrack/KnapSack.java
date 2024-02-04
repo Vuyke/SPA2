@@ -1,5 +1,7 @@
 package backtrack;
 
+import java.util.Arrays;
+
 import util.Util;
 
 public class KnapSack {
@@ -27,6 +29,7 @@ public class KnapSack {
 	}
 	
 	public void find() {
+		Arrays.sort(items);
 		find(0, 0, 0);
 	}
 	
@@ -47,11 +50,31 @@ public class KnapSack {
 			return;
 		}
 		if(sum + items[k].getTezina() <= capacity) {
-			in[k] = true;
-			find(k + 1, sum + items[k].getTezina(), curProfit + items[k].getCena());
+			int newProfit = curProfit + items[k].getCena();
+			int newSum = sum + items[k].getTezina();
+			if(newProfit + bound(k, capacity - newSum) > bestProfit) {
+				in[k] = true;
+				find(k + 1, sum + items[k].getTezina(), curProfit + items[k].getCena());
+			}
 		}
-		in[k] = false;
-		find(k + 1, sum, curProfit);
+		if(curProfit + bound(k, capacity - sum) > bestProfit) {
+			in[k] = false;
+			find(k + 1, sum, curProfit);
+		}
+	}
+	
+	private double bound(int k, int w) {
+		k++;
+		int curW = 0;
+		double curProfit = 0.0;
+		while(k < items.length && curW <= w) {
+			double tren = Math.min(1, (double)(capacity - w) / (double)items[k].getTezina());
+			curProfit += tren * items[k].getCena();
+			if(tren != 1)
+				break;
+			k++;
+		}
+		return curProfit;
 	}
 	
 	public static void main(String args[]) {
