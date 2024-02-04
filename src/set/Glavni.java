@@ -5,14 +5,21 @@ import util.Util;
 
 public class Glavni {
 	public static void main(String args[]) {
-		OHashSet<Osobe> set = new OHashSet<Osobe>(15);
+		CHashSet<Osobe> set = new CHashSet<Osobe>(4);
 		Osobe[] osobe = Util.osobe;
-		for(Osobe osoba : osobe)
-			set.add(osoba);
+		for(Osobe osoba : osobe) {
+			if(set.add(osoba)) {
+				System.out.println("POG!");
+			}
+		}
 		set.print();
 		Osobe test = new Osobe(12, "Jovan");
 		if(set.contains(test)) {
 			System.out.println("Ima!!!");
 		}
+		if(set.remove(test)) {
+			System.out.println("Obrisan!!");
+		}
+		set.print();
 	}
 }
