@@ -1,4 +1,4 @@
-package backtrack;
+package util;
 
 public class Item implements Comparable<Item> {
 	private int tezina;

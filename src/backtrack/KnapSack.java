@@ -2,6 +2,7 @@ package backtrack;
 
 import java.util.Arrays;
 
+import util.Item;
 import util.Util;
 
 public class KnapSack {
