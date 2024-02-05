@@ -56,7 +56,7 @@ public class BST<T extends Comparable<T>> implements Set<T> {
 		return true;
 	}
 
-	private void removeTrivial(SearchResult s) { // funkcija za brisanje cvora koji ima <= 1 dete
+	private void removeUtil(SearchResult s) { // funkcija za brisanje cvora koji ima <= 1 dete
 		BTNode<T> exists = s.node.getRight() == null ? s.node.getLeft() : s.node.getRight();
 		if (s.parent == null) {
 			root = exists;
@@ -73,7 +73,7 @@ public class BST<T extends Comparable<T>> implements Set<T> {
 		if (s.node == null)
 			return false;
 		if (s.node.getLeft() == null || s.node.getRight() == null) {
-			removeTrivial(s); //cvor ima <= 1 dete
+			removeUtil(s); //cvor ima <= 1 dete
 			return true;
 		}
 		BTNode<T> cur = s.node.getRight(); //odavde cvor ima 2 deteta pa ga menjamo sa prvim vecim od njega
@@ -83,7 +83,7 @@ public class BST<T extends Comparable<T>> implements Set<T> {
 			cur = cur.getLeft();
 		}//cur je sada prvi veci od njega i sigurno ima <= 1 dete
 		T info = cur.getInfo(); //cuvamo info iz cura posto cemo ga dati s.node-u
-		removeTrivial(new SearchResult(cur, par));//brisemo bez problema posto ima <= 1 dete
+		removeUtil(new SearchResult(cur, par));//brisemo bez problema posto ima <= 1 dete
 		s.node.setInfo(info);//namestamo info u node kako treba
 		return true;
 	}
