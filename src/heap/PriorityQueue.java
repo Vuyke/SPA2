@@ -1,6 +1,6 @@
 package heap;
 
-public interface PriorityQueue<T extends Comparable<T>> {//interfejs za prioritetnu listu
+public interface PriorityQueue<T extends Comparable<T>> {// interfejs za prioritetnu listu
 	void add(T element);
 
 	T max();

@@ -36,7 +36,7 @@ public class Item implements Comparable<Item> {
 		double cur1 = (double) cena / (double) tezina;
 		double cur2 = (double) o.cena / (double) o.tezina;
 		if (cur1 > cur2)
-			return -1; //da bi sortirali opadajuce
+			return -1; // da bi sortirali opadajuce
 		if (cur1 < cur2)
 			return 1;
 		return 0;

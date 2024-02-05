@@ -54,12 +54,12 @@ public class Hafman {
 	private void construct() {
 		PriorityQueue<BTNode<Node>> prio = new PriorityQueue<BTNode<Node>>();
 		Iterator<Node> it = l.iterator();
-		while(it.hasNext()) {
+		while (it.hasNext()) {
 			Node cur = it.next();
 			BTNode<Node> n = new BTNode<Node>(cur);
 			prio.add(n);
 		}
-		while(prio.size() >= 2) {
+		while (prio.size() >= 2) {
 			BTNode<Node> n1 = prio.poll();
 			BTNode<Node> n2 = prio.poll();
 			Node cur = new Node(n1.getInfo().frequency + n2.getInfo().frequency, '?');
@@ -68,29 +68,29 @@ public class Hafman {
 		}
 		bin = new BTClassic(prio.poll());
 	}
-	
+
 	public void print() {
 		BTNode<Node> root = bin.getRoot();
-		if(root.getLeft() == null && root.getRight() == null) {
+		if (root.getLeft() == null && root.getRight() == null) {
 			System.out.println(root.getInfo() + ": " + "1");
 			return;
 		}
 		print(root, new String(""));
 	}
-	
+
 	private void print(BTNode<Node> cur, String s) {
-		if(cur.getLeft() == null && cur.getRight() == null) {
+		if (cur.getLeft() == null && cur.getRight() == null) {
 			System.out.println(cur.getInfo() + ": " + s);
 			return;
 		}
-		if(cur.getLeft() != null) {
+		if (cur.getLeft() != null) {
 			print(cur.getLeft(), s + '1');
 		}
-		if(cur.getRight() != null) {
+		if (cur.getRight() != null) {
 			print(cur.getRight(), s + '0');
 		}
 	}
-	
+
 	public static void main(String args[]) {
 		Hafman h = new Hafman("ana voli milovana");
 		h.print();

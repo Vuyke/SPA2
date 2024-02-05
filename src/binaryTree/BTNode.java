@@ -1,6 +1,6 @@
 package binaryTree;
 
-public class BTNode<T extends Comparable<T>> implements Comparable<BTNode<T>>{
+public class BTNode<T extends Comparable<T>> implements Comparable<BTNode<T>> {
 	private T info;
 	private BTNode left;
 	private BTNode right;
