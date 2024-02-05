@@ -1,5 +1,7 @@
 package string;
 
+import java.util.HashMap;
+
 public class KMP {
 	private String text;
 	private String pattern;
@@ -64,16 +66,14 @@ public class KMP {
 		return -1;
 	}
 	
-	private int[] createLast() {
-		int[] last = new int[256];
-		for(int i = 0; i < last.length; i++)
-			last[i] = -1;
+	private HashMap<Character, Integer> createMap() {
+		HashMap<Character, Integer> map = new HashMap<Character, Integer>();
 		for(int i = pattern.length() - 1; i >= 0; i--) {
-			if(last[pattern.charAt(i)] == -1) {
-				last[pattern.charAt(i)] = i;
+			if(!map.containsKey(pattern.charAt(i))) {
+				map.put(pattern.charAt(i), i);
 			}
 		}
-		return last;
+		return map;
 	}
 	
 	private boolean check(int ind) {
@@ -85,19 +85,20 @@ public class KMP {
 	}
 	
 	public int findQuick() {
-		int[] last = createLast();
+		HashMap<Character, Integer> last = createMap();
 		for(int i = 0; i <= text.length() - pattern.length();) {
 			if(check(i)) {
 				return i;
 			}
 			char c = text.charAt(i + pattern.length());
-			i += pattern.length() - last[c];
+			int oduzmi = last.containsKey(c) ? last.get(c) : -1;
+			i += pattern.length() - oduzmi;
 		}
 		return -1;
 	}
 	
 	public static void main(String args[]) {
-		KMP k = new KMP("ana voli milovana", "van");
+		KMP k = new KMP("ana voli milovana", "a v");
 		System.out.println(k.findQuick());
 	}
 }
