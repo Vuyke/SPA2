@@ -4,6 +4,7 @@ public class Util { // odavde ce se uzimati elementi za nizove,liste,priority qu
 	public static Osobe[] osobe;
 	public static Osobe[] osobe2;
 	public static Item[] items;
+	public static Tacka[] tacke;
 	static {
 		osobe = new Osobe[8];
 		osobe[0] = new Osobe(12, "Jovan");
@@ -34,7 +35,19 @@ public class Util { // odavde ce se uzimati elementi za nizove,liste,priority qu
 		items[6] = new Item(4, 9);
 		items[7] = new Item(1, 2);
 	}
-
+	
+	static {
+		tacke = new Tacka[8];
+        tacke[0] = new Tacka(1.0, 2.0);
+        tacke[1] = new Tacka(3.5, 4.2);
+        tacke[2] = new Tacka(0.8, 1.7);
+        tacke[3] = new Tacka(2.5, 3.0);
+        tacke[4] = new Tacka(4.2, 1.5);
+        tacke[5] = new Tacka(3.0, 2.8);
+        tacke[6] = new Tacka(1.2, 4.0);
+        tacke[7] = new Tacka(0.5, 1.0);
+	}
+	
 	public static <T> void ispis(T[] arr) {
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(arr[i] + " ");

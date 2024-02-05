@@ -94,17 +94,17 @@ public class BST<T extends Comparable<T>> implements Set<T> {
 		return s.node != null;
 	}
 	
-	public void preOrder() {
-		preOrder(root);
+	public void inOrder() {
+		inOrder(root);
 		System.out.println();
 	}
 
-	private void preOrder(BTNode<T> cur) {
+	private void inOrder(BTNode<T> cur) {
 		if (cur == null)
 			return;
+		inOrder(cur.getLeft());
 		System.out.print(cur);
-		preOrder(cur.getLeft());
-		preOrder(cur.getRight());
+		inOrder(cur.getRight());
 	}
 	
 	public static void main(String args[]) {
@@ -113,10 +113,16 @@ public class BST<T extends Comparable<T>> implements Set<T> {
 		for(Osobe osoba : osobe) {
 			bin.add(osoba);
 		}
-		bin.preOrder();
+		bin.inOrder();
 		if(bin.remove(osobe[3])) {
 			System.out.println("Obrisan!!!");
 		}
-		bin.preOrder();	
+		bin.inOrder();	
+		bin.remove(osobe[2]);
+		bin.inOrder();
+		bin.remove(osobe[2]);
+		bin.inOrder();
+		bin.remove(new Osobe(5, "Ana"));
+		bin.inOrder();
 	}
 }
