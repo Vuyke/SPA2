@@ -31,7 +31,7 @@ public class OHashSet<T> implements Set<T> {
 		return Math.abs(o.hashCode() % table.length);
 	}
 
-	private Node[] searchChain(T element, int hash) {//vracamo element i njegovog prethodnog ako nadjemo
+	private Node[] searchChain(T element, int hash) {// vracamo element i njegovog prethodnog ako nadjemo
 		Node cur = table[hash];
 		Node prev = null;
 		while (cur != null) {
@@ -65,28 +65,28 @@ public class OHashSet<T> implements Set<T> {
 		table[hash] = tmp;
 		return true;
 	}
-	
+
 	@Override
 	public boolean remove(T element) {
-		if(element == null)
+		if (element == null)
 			throw new IllegalArgumentException("Objekat ne postoji!");
 		int hash = Math.abs(element.hashCode() % table.length);
 		Node[] n = searchChain(element, hash);
-		if(n == null)
+		if (n == null)
 			return false;
-		if(n[0] == null) {
+		if (n[0] == null) {
 			table[hash] = table[hash].next;
 			return true;
 		}
 		n[0].next = n[1].next;
 		return true;
 	}
-	
+
 	public void print() {
-		for(int i = 0; i < table.length; i++) {
+		for (int i = 0; i < table.length; i++) {
 			System.out.print("HashCode = " + i + ": ");
 			Node cur = table[i];
-			while(cur != null) {
+			while (cur != null) {
 				System.out.print(cur.value + " ");
 				cur = cur.next;
 			}
